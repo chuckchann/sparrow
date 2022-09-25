@@ -1,0 +1,77 @@
+---
+appName: user-server-demo
+namespace: default
+author: chuckchann@163.com
+version: v1.0.0
+env: dev
+
+server:
+  host: 0.0.0.0
+  port: 8082
+
+prometheus:
+  host: 0.0.0.0
+  port: 8081
+
+pprof:
+  host: 0.0.0.0
+  port: 8082
+
+registry:
+  timeout: 5s
+  etcd:
+    endpoints:
+      - 127.0.0.1:8080
+
+log:
+  output: terminal
+  path: ./log/sparrow.log
+  file:
+    isOpen: true
+    maxAge: 7
+    rotationTime: 1
+  notify: [ ]
+
+middleware:
+  jwtAuth:
+    isOpen: false
+    privateKey: winter is comming
+  rateLimit:
+    isOpen: true
+  trace:
+    isOpen: false
+    endpoint: 192.168.1.102:14268/api/traces
+    agnet:
+      host: localhost
+      port: 11520
+  fusing:
+    isOpen: true
+  prometheus:
+    isOpen: false
+    port: 8081
+
+db:
+  master:
+    user: admin-master
+    password: "123456"
+    host: 127.0.0.1
+    port: "3306"
+    name: your db name
+    maxOpenConns: 100
+    maxIdleConns: 100
+
+redis:
+  host: 127.0.0.1
+  port: "6379"
+  password: "123456"
+  dbIndex: 1
+  maxConns: 100
+  idleTimeout: 3
+
+wechat:
+  appId: "APP_ID"
+  appSecret: "APP_SECRET"
+
+token:
+  secret: "xxxxx"
+  ttl: 300

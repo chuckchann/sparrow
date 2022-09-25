@@ -1,0 +1,20 @@
+syntax = "proto3";
+package order;
+option go_package = "sparrow/api/protobuf_spec/order";
+import "api/protobuf_spec/common/common.proto";
+import "api/protobuf_spec/user/user.proto";
+
+message GetOrderInfoReq {
+  string orderID = 1;
+}
+
+message OrderInfo {
+  float         Price       = 1;
+  string        Address     = 2;
+  string        ProductName = 3;
+  user.UserInfo User        = 4;
+}
+
+service Order {
+  rpc GetOrderInfo(GetOrderInfoReq) returns (common.Response) {}
+}

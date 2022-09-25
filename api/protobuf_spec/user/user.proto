@@ -1,0 +1,24 @@
+syntax = "proto3";
+package user;
+option go_package = "sparrow/api/protobuf_spec/user";
+
+import "api/protobuf_spec/common/common.proto";
+
+message GetUserInfoRequest {
+  int64 id = 1;
+}
+
+message UserInfo {
+  int64 id = 1;
+  string name = 2;
+  int64 gender = 3 ;
+  string address = 4;
+  string email = 5;
+  string mobile = 6;
+  string job = 7;
+  string test = 8;
+}
+
+service User{
+  rpc GetUserInfo(GetUserInfoRequest) returns (common.Response) {}
+}

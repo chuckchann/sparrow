@@ -1,0 +1,11 @@
+syntax = "proto3";
+package common;
+option go_package = "sparrow/api/protobuf_spec/common";
+
+import "google/protobuf/any.proto";
+
+message Response {
+  int64 code = 1;
+  string msg = 2;
+  google.protobuf.Any data = 3;
+}
